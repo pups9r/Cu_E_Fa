@@ -1,0 +1,43 @@
+# Hello we make a "Cu-E-Fa Game" :-)
+from random import randint
+from time import sleep
+
+options = ["R", "P", "S"]
+
+lose = "You are loser!"
+win = "You are the best!"
+
+
+def decide_winner(user_choice, computer_choice):
+    print ("You choice is: %s") % user_choice
+    print ("Computer selecting...")
+    sleep(1)
+    print ("Computer choice is: %s") % computer_choice
+
+    user_choice_index = options.index(user_choice)
+    computer_choice_index = options.index(computer_choice)
+
+    if user_choice_index == computer_choice_index:
+        print ("It's a tie")
+    elif user_choice_index == 0 and computer_choice_index == 2:
+        print (win)
+    elif user_choice_index == 1 and computer_choice_index == 1:
+        print (win)
+    elif user_choice_index == 2 and computer_choice_index == 1:
+        print (win)
+    elif user_choice_index > 2:
+        print ("Invalid option")
+        return
+    else:
+        return lose
+
+
+def play_RPS():
+    print ("Play Cu-E-Fa?")
+    user_choice = input("Select R - rock, S - scissors, P - Paper: ")
+    sleep(1)
+    computer_choice = options[randint(0, len(options) - 1)]
+    decide_winner(user_choice, computer_choice)
+
+
+play_RPS()
